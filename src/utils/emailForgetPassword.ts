@@ -11,7 +11,7 @@ const forgetPasswordEmail = async (data: emailInterface) => {
 	const { email, nombre, token, url } = data
 	var transport = nodemailer.createTransport({
 		host: process.env.MAIL_HOST,
-		port: 2525,
+		port: Number(process.env.MAIL_PORT),
 		auth: {
 			user: process.env.MAIL_USER,
 			pass: process.env.MAIL_PASS,
