@@ -14,7 +14,9 @@ export async function ObtenerPacienteByIHandler(req: Request) {
 		if (!paciente) {
 			return new NotFoundException('Paciente no encontrado')
 		}
-		if (paciente.veterinario._id.toString() !== req.data._id.toString()) {
+		if (
+			(paciente.veterinario as any)._id.toString() !== req.data._id.toString()
+		) {
 			return new NotFoundException('Paciente no encontrado')
 		}
 		return new ApiResponse(200, 'Paciente obtenido', paciente)
